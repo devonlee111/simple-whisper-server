@@ -9,8 +9,12 @@ class transcriber {
 	}
 
 	startWhisperIntegration() {
+		console.log("starting upload watcher...");
 		this.watcher = this.setupWatcher();
-		this.startTranscriptionProcess;
+		console.log("upload watcher started.");
+
+		console.log("starting transriber...");
+		this.startTranscriptionProcess();
 	}
 
 	// Setup chokidar file watcher for new uploads
@@ -37,7 +41,7 @@ class transcriber {
 			await sleep(100);
 			if (this.transcriptionQueue.length > 0) {
 				console.log("queue is not empty, starting transcription process...");
-				file = this.transcriptionQueue.shift();
+				let file = this.transcriptionQueue.shift();
 				console.log(`beginning transcription of ${file}`);
 				this.transcribe(file);
 			}
@@ -46,7 +50,7 @@ class transcriber {
 
 	// Transcribe a given file with whisper
 	transcribe(file) {
-		let command = `whisper ${file} --model medium`;
+		let command = `whisper ${file} --model base`;
 		console.log(`executing whisper command: ${command}`);
 		exec(command, (error, stdout, stderr) => {
 			if (error) {
