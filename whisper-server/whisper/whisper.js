@@ -1,6 +1,7 @@
 const chokidar = require("chokidar");
 const { exec } = require("child_process");
 const uploadDir = "./uploads";
+const transcriptionDir = "./transcriptions"
 
 class transcriber {
 	constructor() {
@@ -50,7 +51,7 @@ class transcriber {
 
 	// Transcribe a given file with whisper
 	transcribe(file) {
-		let command = `whisper ${file} --model base`;
+		let command = `whisper ${file} --model base --output_dir ${transcriptionDir} --output_format txt`;
 		console.log(`executing whisper command: ${command}`);
 		exec(command, (error, stdout, stderr) => {
 			if (error) {
