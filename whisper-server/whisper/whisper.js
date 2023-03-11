@@ -2,7 +2,7 @@ const chokidar = require("chokidar");
 const { exec } = require("child_process");
 const uploadDir = "../uploads";
 
-export class transciber {
+export class transcriber {
 	constructor() {
 		this.transcriptionQueue = [];
 		this.watcher = undefined;

@@ -34,8 +34,8 @@ server.on("listening", onListening);
  * Start whisper integration process.
  */
 
-let transciber = new whisper.transciber();
-transciber.startWhisperIntegration();
+let transcriber = new whisper.transcriber();
+transcriber.startWhisperIntegration();
 
 /**
  * Normalize a port into a number, string, or false.
