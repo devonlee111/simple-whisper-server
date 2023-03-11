@@ -1,15 +1,15 @@
 const chokidar = require("chokidar");
 const { exec } = require("child_process");
-const uploadDir = "../uploads";
+const uploadDir = "./uploads";
 
-export class transcriber {
+class transcriber {
 	constructor() {
 		this.transcriptionQueue = [];
 		this.watcher = undefined;
 	}
 
 	startWhisperIntegration() {
-		this.watcher = setupWatcher();
+		this.watcher = this.setupWatcher();
 		this.startTranscriptionProcess;
 	}
 
@@ -61,3 +61,5 @@ export class transcriber {
 function sleep(time) {
 	return new Promise((resolve) => setTimeout(resolve, time));
 }
+
+module.exports = { transcriber }
